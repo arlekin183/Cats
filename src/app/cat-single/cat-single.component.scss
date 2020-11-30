@@ -1,0 +1,23 @@
+.cat_wrapper {
+	background-color: bisque;
+	border: 1px solid black;
+	height: 750px;
+	.cat_img {
+		
+		text-align: center;
+		img {
+			height: 300px;
+			float: left;
+		}
+	}
+
+	.manage_buttons {
+		text-align: center;
+		div {
+			display: inline;
+			button {
+				margin: 5px;
+			}
+		}
+	}
+}

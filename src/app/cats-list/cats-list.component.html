@@ -1,0 +1,33 @@
+<div class="cats_wrapper">
+	<div class="row cat_row" *ngFor="let cat of catsList">
+		<div class="col-3 cat_img"><img src="{{ cat.img }}" alt="Здесь должна быть картинка котика, но похоже, этот котик без картинки..." /></div>
+		<div class="col-3 cat_name">Имя: {{ cat.name }}</div>
+		<div class="col-3 cat_likes">
+			<a class="btn btn-sm" (click)="setLike(cat)">
+				<ion-icon *ngIf="!cat.likeSet" name="heart-outline"></ion-icon>
+				<ion-icon *ngIf="cat.likeSet" name="heart"></ion-icon>
+			</a>
+			<span>{{ cat.like }}</span>
+		</div>
+		<div class="col-3">
+			<a class="btn btn-sm" (click)="editCat(cat)"><ion-icon name="create-outline"></ion-icon></a>
+			<a class="btn btn-sm btn-danger" (click)="clickRemoveCat(cat)" ><ion-icon name="close-circle-outline"></ion-icon> </a>
+		</div>
+	</div>
+</div>
+<div class="cat_add">
+	<a class="btn btn-lg btn-success" (click)="editCat()"><ion-icon name="add-circle-outline"></ion-icon>Добавить котика </a>
+</div>
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Удаление котика</h4>
+  </div>
+  <div class="modal-body">
+    <h4>Вы действительно хотите удалить котика по имени {{removedCat.name}} ??</h4>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-danger btn-lg" (click)="modal.close('delete')">Удалить</button>
+    <button type="button" class="btn btn-success btn-lg" (click)="modal.close('nondelete')">Оставить</button>
+  </div>
+</ng-template>

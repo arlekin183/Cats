@@ -1,1 +1,33 @@
-<p>cat-single works!</p>
+<div class="cat_wrapper" >
+	<div class="cat_info row">
+		<div class="cat_img col-3">
+			<img src="{{ changedCat.img }}" alt="Здесь должна быть картинка котика, но похоже, этот котик пока без картинки..." />
+		</div>
+		<div class="col-9">
+			<h4>Имя*:</h4>
+			<input type="text" required [(ngModel)]="changedCat.name" />
+			<br />
+			<h4>Ссылка на фоточку*:</h4>
+			<div><textarea required [(ngModel)]="changedCat.img" class="form-control form-control-sm"></textarea></div>
+			<br />
+			<h4>Количество тех, кому он понравился: {{ changedCat.like }}</h4>
+		</div>
+	</div>
+	<div class="manage_buttons">
+		<div>
+			<button type="button" class="btn btn-danger btn-lg" (click)="save()">Сохранить</button>
+			<button type="button" class="btn btn-success btn-lg" (click)="discardChanges()">Вернуть изменения</button>
+			<button type="button" class="btn btn-success btn-lg" (click)="cancel()">Вернуться</button>
+		</div>
+	</div>
+</div>
+
+<ng-template #content let-modal>
+  
+  <div class="modal-body">
+    <h4>Не заполнены обязательные поля</h4>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-success btn-lg" (click)="modal.close('')">Понятно</button>
+  </div>
+</ng-template>
